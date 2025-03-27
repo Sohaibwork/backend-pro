@@ -1,12 +1,34 @@
+// class ApiError extends Error {
+//   constructor(
+//     statusCode,
+//     message = "Something went wrong!",
+//     errors = [],
+//     stack = ""
+//   ) {
+//     super(message);
+
+//     this.statusCode = statusCode;
+//     this.data = null;
+//     this.message = message;
+//     this.success = false;
+//     this.errors = errors;
+
+//     if (stack) {
+//       this.stack = stack;
+//     } else {
+//       Error.captureStackTrace(this.this.constructor);
+//     }
+//   }
+// }
+// export { ApiError };
 class ApiError extends Error {
   constructor(
     statusCode,
-    message = "Something went wrong!",
+    message = "Something went wrong",
     errors = [],
     stack = ""
   ) {
     super(message);
-
     this.statusCode = statusCode;
     this.data = null;
     this.message = message;
@@ -16,8 +38,9 @@ class ApiError extends Error {
     if (stack) {
       this.stack = stack;
     } else {
-      Error.captureStackTrace(this.this.constructer);
+      Error.captureStackTrace(this, this.constructor);
     }
   }
 }
+
 export { ApiError };
